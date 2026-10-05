@@ -100,6 +100,52 @@
 }
 @media(prefers-reduced-motion:reduce){.lift-cabin,.lift-door,.lift-cabin-light,.lift-cabin:before,.lift-floor,.service,.service-mark,.btn,.quick-contact a,.reveal-on-scroll{transition:none}.reveal-on-scroll{opacity:1;transform:none}.btn:hover,.quick-contact a:hover,.service:hover .service-mark{transform:none}}
 
+/* Percorsi per esigenza: foto reali, domande chiare e azioni riconoscibili. */
+#servizi{background:#faf9f6}
+#servizi .section-head{gap:40px;align-items:center;margin-bottom:30px}
+#servizi .section-intro{max-width:390px}
+.service-grid{gap:20px;border:0;grid-template-columns:repeat(3,minmax(0,1fr))}
+.service{padding:0;border:1px solid #e1e3e3;border-radius:18px;overflow:hidden;background:white;box-shadow:0 5px 18px #17293f06;transition:box-shadow .25s,border-color .25s}
+.service:hover{background:white;border-color:#c2ced9;box-shadow:0 12px 30px #17293f12}
+.service-photo{width:100%;height:180px;object-fit:cover;object-position:center 43%}
+.service-body{padding:26px;display:flex;flex-direction:column;flex:1;min-width:0}
+.service-label{font-size:15px;line-height:1.5;font-weight:700;color:#37516c;display:block;margin-bottom:12px}
+.service h3{font-size:25px;line-height:1.2;letter-spacing:-.5px;margin:0 0 16px;color:var(--ink);overflow-wrap:normal}
+.service p{font-size:16px;line-height:1.65;color:#536171;margin:0 0 24px}
+.service a.service-action{align-self:stretch;justify-content:center;min-height:50px;margin-top:auto;padding:12px 14px;border:1px solid var(--navy);border-radius:9px;background:var(--navy);color:white;font-size:16px;line-height:1.4;text-align:center;font-weight:700;text-decoration:none;transition:background .2s}
+.service a.service-action:hover{background:var(--blue);border-color:var(--blue)}
+.service-emergency{background:#102a4d;border-color:#102a4d;color:white;position:relative}
+.service-emergency:hover{background:#102a4d;border-color:#102a4d}
+.service-emergency .service-body{padding:32px 26px;background:radial-gradient(ellipse at top right,#27587588,transparent 70%)}
+.service-emergency .service-label{color:#ffc1a9;margin-bottom:25px}
+.service-emergency h3{font-size:32px;color:white;letter-spacing:-.7px;margin-bottom:18px}
+.service-emergency p{color:#e1e9f1}
+.service-help{margin:0 0 26px;border-left:3px solid #ff9275;padding-left:14px;font-size:16px;line-height:1.6;color:#e1e9f1}
+.service-help strong{display:block;color:white;margin-bottom:4px}
+.service-emergency a.service-action{background:#c84629;border-color:#c84629;margin-top:auto}
+.service-emergency a.service-action:hover{background:#ae381f;border-color:#ae381f}
+.service a.service-secondary{justify-content:center;align-self:stretch;margin:10px 0 0;min-height:48px;padding:11px;border:1px solid #afc3d7;border-radius:9px;color:white;font-size:16px;text-align:center;line-height:1.4}
+.service a.service-secondary:hover{background:#ffffff12;text-decoration:none}
+.service-more-heading{font-size:26px;line-height:1.25;letter-spacing:-.5px;margin:48px 0 12px}
+.service-more-intro{margin:0 0 24px;font-size:16px;color:var(--muted)}
+.service-additional .service{background:#fff;border-top:3px solid #e7b79c}
+.service-additional .service h3{font-size:22px}
+.service-additional .service-label{color:#77513f}
+.service-additional a.service-action{background:#f4f6f9;border-color:#d2dbe4;color:var(--navy)}
+.service-additional a.service-action:hover{background:#e7edf3}
+.contact-context{border:1px solid #e7b79c;border-radius:12px;background:#fff7ef;padding:18px 20px;margin:0 0 24px;line-height:1.6;font-size:16px}
+.contact-context[hidden]{display:none}.contact-context>span{display:block;color:#765441;font-size:14px;margin-bottom:4px}.contact-context strong{display:block;color:var(--ink);font-size:18px;line-height:1.4;margin-bottom:8px}.contact-context p{margin:0 0 8px;color:#536171;font-size:16px}.contact-context a{color:var(--blue);text-decoration:underline;font-size:16px}
+@media(max-width:1000px) and (min-width:761px){.service-grid{gap:14px}.service-body,.service-emergency .service-body{padding:24px 20px}.service h3{font-size:23px}.service-emergency h3{font-size:28px}}
+@media(max-width:760px){
+ #servizi .section-head{margin-bottom:26px}.service-grid{grid-template-columns:minmax(0,1fr);gap:22px}
+ .service-body,.service-emergency .service-body{padding:24px}.service-photo{height:170px}
+ .service-label{font-size:15px;margin-bottom:10px}.service h3{font-size:25px;line-height:1.22}.service-emergency h3{font-size:30px}
+ .service-emergency .service-label{margin-bottom:16px}.service p{margin-bottom:20px}.service-help{margin-bottom:24px}
+ .service a.service-action,.service a.service-secondary{min-height:50px;font-size:16px}
+ .service-more-heading{margin-top:40px;font-size:24px}.service-additional .service h3{font-size:23px}
+}
+@media(prefers-reduced-motion:reduce){.service,.service a.service-action{transition:none}}
+
   </style>
 </head>
 <body id="inizio">
@@ -121,14 +167,17 @@
     </div></section>
     <div class="facts"><div class="wrap facts-inner"><div class="fact"><strong>30+</strong><span><b>Anni di esperienza</b>Nel settore degli impianti elevatori</span></div><div class="fact"><strong>Casoria</strong><span><b>Un riferimento vicino</b>Operativi a Napoli e provincia</span></div><div class="fact"><strong>360°</strong><span><b>Il ciclo di vita dell’impianto</b>Dall’installazione all’ammodernamento</span></div></div></div>
     <section class="section" id="servizi" aria-labelledby="servizi-title"><div class="wrap">
-      <div class="section-head"><div><div class="eyebrow">Di cosa ci occupiamo</div><h2 id="servizi-title">Un impianto, tante esigenze.<br>Il servizio giusto per ognuna.</h2></div><p class="section-intro">Dal funzionamento dell’ascensore all’accessibilità degli spazi, fino agli automatismi e ai sistemi citofonici.</p></div>
+      <div class="section-head"><div><div class="eyebrow">Partiamo dalla tua esigenza</div><h2 id="servizi-title">Di cosa hai bisogno?</h2></div><p class="section-intro">Un problema da risolvere, un nuovo ascensore o un impianto da rinnovare: scegli il punto da cui partire.</p></div>
       <div class="service-grid">
-        <article class="service"><div class="service-top"><span class="service-number">01 / CONTINUITÀ</span><span class="service-mark" aria-hidden="true">↻</span></div><h3>Manutenzione e assistenza</h3><p>Manutenzione programmata e assistenza tecnica per guasti, blocchi e malfunzionamenti.</p><a href="#assistenza">Richiedi un intervento <span aria-hidden="true">→</span></a></article>
-        <article class="service"><div class="service-top"><span class="service-number">02 / NUOVI IMPIANTI</span><span class="service-mark" aria-hidden="true">↕</span></div><h3>Installazione ascensori</h3><p>Ascensori per condomini, aziende e abitazioni private, in relazione alle caratteristiche dell’edificio.</p><a href="#contatti">Parliamo del tuo progetto <span aria-hidden="true">→</span></a></article>
-        <article class="service"><div class="service-top"><span class="service-number">03 / RIQUALIFICAZIONE</span><span class="service-mark" aria-hidden="true">↗</span></div><h3>Ammodernamento</h3><p>Interventi sugli impianti esistenti per migliorarne sicurezza, funzionalità e prestazioni.</p><a href="#contatti">Valutiamo il tuo impianto <span aria-hidden="true">→</span></a></article>
-        <article class="service"><div class="service-top"><span class="service-number">04 / ACCESSIBILITÀ</span><span class="service-mark" aria-hidden="true">↑</span></div><h3>Piattaforme elevatrici</h3><p>Piattaforme e pedane elevatrici per interni ed esterni, per superare le barriere architettoniche.</p><a href="#contatti">Troviamo una soluzione <span aria-hidden="true">→</span></a></article>
-        <article class="service"><div class="service-top"><span class="service-number">05 / ACCESSI</span><span class="service-mark" aria-hidden="true">⇄</span></div><h3>Automatismi</h3><p>Automazione di cancelli, serrande e portoni motorizzati per la gestione degli accessi.</p><a href="#contatti">Raccontaci cosa ti serve <span aria-hidden="true">→</span></a></article>
-        <article class="service"><div class="service-top"><span class="service-number">06 / COMUNICAZIONE</span><span class="service-mark" aria-hidden="true">◉</span></div><h3>Citofoni e videocitofoni</h3><p>Sistemi citofonici e videocitofonici per condomini, abitazioni private e aziende.</p><a href="#contatti">Richiedi informazioni <span aria-hidden="true">→</span></a></article>
+        <article class="service service-emergency"><div class="service-body"><span class="service-label">Manutenzione e assistenza</span><h3>L’ascensore è fermo?</h3><p>Per guasti, blocchi o malfunzionamenti, chiamaci e descrivi cosa sta succedendo.</p><div class="service-help"><strong>Ci aiuti a capire l’intervento.</strong>Indica dove si trova l’impianto e quale problema hai riscontrato.</div><a class="service-action" href="tel:+390817588070">Chiama per assistenza</a><a class="service-secondary" href="#contatti" data-service="Manutenzione programmata">Organizza la manutenzione</a></div></article>
+        <article class="service"><img class="service-photo" src="assets/ascensore-esterno.webp" width="800" height="1000" loading="lazy" alt="Ascensore esterno con struttura vetrata, fotografia di B.D. Ascensori"><div class="service-body"><span class="service-label">Installazione ascensori</span><h3>Vuoi un nuovo ascensore?</h3><p>Partiamo dagli spazi del tuo edificio per valutare un impianto adatto al condominio, all’azienda o alla tua abitazione.</p><a class="service-action" href="#contatti" data-service="Installazione ascensori">Richiedi un sopralluogo</a></div></article>
+        <article class="service"><img class="service-photo" src="assets/ascensore-interno.webp" width="900" height="600" loading="lazy" alt="Ascensore in un ambiente interno, fotografia di B.D. Ascensori"><div class="service-body"><span class="service-label">Ammodernamento</span><h3>Il tuo impianto va rinnovato?</h3><p>Valutiamo gli interventi sull’ascensore esistente per migliorarne sicurezza, funzionalità e prestazioni.</p><a class="service-action" href="#contatti" data-service="Ammodernamento ascensori">Parliamo del tuo impianto</a></div></article>
+      </div>
+      <h3 class="service-more-heading">Altre esigenze del tuo edificio</h3><p class="service-more-intro">Accessibilità, ingressi e comunicazione: possiamo partire anche da qui.</p>
+      <div class="service-grid service-additional">
+        <article class="service"><div class="service-body"><span class="service-label">Piattaforme e pedane elevatrici</span><h3>Ci sono scale da superare?</h3><p>Per rendere più accessibili gli spazi interni ed esterni, valutiamo una piattaforma o una pedana elevatrice.</p><a class="service-action" href="#contatti" data-service="Piattaforme e pedane elevatrici">Valutiamo gli spazi</a></div></article>
+        <article class="service"><div class="service-body"><span class="service-label">Automatismi</span><h3>Un accesso da automatizzare?</h3><p>Cancelli, serrande e portoni motorizzati: raccontaci quale ingresso vuoi gestire e come lo utilizzi.</p><a class="service-action" href="#contatti" data-service="Automatismi per cancelli, serrande e portoni">Parliamo del tuo accesso</a></div></article>
+        <article class="service"><div class="service-body"><span class="service-label">Citofoni e videocitofoni</span><h3>Vuoi rinnovare il citofono?</h3><p>Per un condominio, una casa o un’azienda, confrontiamo le esigenze e le soluzioni citofoniche disponibili.</p><a class="service-action" href="#contatti" data-service="Citofoni e videocitofoni">Scegliamo la soluzione</a></div></article>
       </div>
     </div></section>
     <section class="section company" id="azienda" aria-labelledby="azienda-title"><div class="wrap company-grid">
@@ -137,7 +186,7 @@
     </div></section>
     <section class="assistance" id="assistenza" aria-labelledby="assistenza-title"><div class="wrap assistance-inner"><div><div class="eyebrow">Assistenza tecnica</div><h2 id="assistenza-title">Un guasto o un ascensore fermo?</h2><p>Contattaci e descrivi il problema, indicando dove si trova l’impianto. Valuteremo con te l’intervento necessario.</p></div><a class="btn btn-white" href="tel:+390817588070">Chiama 081 7588070 <span class="arrow" aria-hidden="true">↗</span></a></div></section>
     <section class="section" id="come-lavoriamo" aria-labelledby="metodo-title"><div class="wrap"><div class="eyebrow">Partiamo dalla tua esigenza</div><h2 id="metodo-title">Il primo passo è parlarne.</h2><div class="steps"><div class="step"><span class="number">01 — IL CONTATTO</span><h3>Raccontaci cosa ti serve</h3><p>Un nuovo ascensore, un impianto da ammodernare o un problema tecnico: chiamaci o scrivici indicando la tua esigenza.</p></div><div class="step"><span class="number">02 — LA VALUTAZIONE</span><h3>Guardiamo gli spazi e l’impianto</h3><p>Per i nuovi lavori, il sopralluogo permette di valutare l’edificio e individuare le soluzioni adatte.</p></div><div class="step"><span class="number">03 — LA SOLUZIONE</span><h3>Definiamo il lavoro insieme</h3><p>Confrontiamo le esigenze e gli interventi possibili, per impostare il lavoro sul tuo impianto.</p></div></div></div></section>
-    <section class="contact" id="contatti" aria-labelledby="contatti-title"><div class="wrap contact-grid"><div class="contact-copy"><div class="eyebrow">Contatti</div><h2 id="contatti-title">Parliamo del<br>tuo prossimo lavoro.</h2><p>Siamo a Casoria e operiamo a Napoli e provincia. Per informazioni, assistenza o un sopralluogo, contattaci direttamente.</p><a class="btn btn-primary" href="mailto:brasiellodomenico@gmail.com">Scrivici un’email <span class="arrow" aria-hidden="true">↗</span></a></div><div class="contact-details"><div class="contact-item"><span class="contact-label">Telefono</span><div><a class="contact-main" href="tel:+390817588070">081 7588070</a><div class="contact-small"><a href="tel:+393387724607">338 7724607</a><a href="tel:+393389017297">338 9017297</a></div></div></div><div class="contact-item"><span class="contact-label">Email</span><a href="mailto:brasiellodomenico@gmail.com">brasiellodomenico@gmail.com</a></div><div class="contact-item"><span class="contact-label">Sede</span><address>Via Giulio Pastore, 17<br>80026 Casoria (NA)</address></div></div></div></section>
+    <section class="contact" id="contatti" aria-labelledby="contatti-title"><div class="wrap contact-grid"><div class="contact-copy"><div class="eyebrow">Contatti</div><h2 id="contatti-title">Parliamo del<br>tuo prossimo lavoro.</h2><div class="contact-context" hidden><span>Hai scelto</span><strong class="selected-service"></strong><p>Quando ci chiami o scrivi, raccontaci cosa ti serve e dove si trova l’edificio.</p><a href="#servizi">Scegli un’altra esigenza</a></div><p>Siamo a Casoria e operiamo a Napoli e provincia. Per informazioni, assistenza o un sopralluogo, contattaci direttamente.</p><a class="btn btn-primary" href="mailto:brasiellodomenico@gmail.com">Scrivici un’email <span class="arrow" aria-hidden="true">↗</span></a></div><div class="contact-details"><div class="contact-item"><span class="contact-label">Telefono</span><div><a class="contact-main" href="tel:+390817588070">081 7588070</a><div class="contact-small"><a href="tel:+393387724607">338 7724607</a><a href="tel:+393389017297">338 9017297</a></div></div></div><div class="contact-item"><span class="contact-label">Email</span><a href="mailto:brasiellodomenico@gmail.com">brasiellodomenico@gmail.com</a></div><div class="contact-item"><span class="contact-label">Sede</span><address>Via Giulio Pastore, 17<br>80026 Casoria (NA)</address></div></div></div></section>
   </main>
   <footer class="footer"><div class="wrap"><div><strong>B.D. Ascensori S.r.l.</strong>Casoria · Napoli e provincia</div><a class="back-top" href="#inizio">Torna all’inizio <span class="arrow" aria-hidden="true">↑</span></a></div></footer>
   <nav class="quick-contact" aria-label="Contatto rapido"><a class="quick-phone" href="tel:+390817588070" aria-label="Chiama B.D. Ascensori allo 081 7588070"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3H4a1 1 0 0 0-1 1c0 9.4 7.6 17 17 17a1 1 0 0 0 1-1v-3l-5-2-2 2a15 15 0 0 1-7-7l2-2z"/></svg><span>Chiama</span></a></nav>
@@ -232,6 +281,15 @@
       }
     }
 
+
+    const contactContext=document.querySelector('.contact-context');
+    const contactEmail=document.querySelector('.contact-copy a[href^="mailto:"]');
+    document.querySelectorAll('[data-service]').forEach(link=>link.addEventListener('click',()=>{
+      const service=link.dataset.service;
+      contactContext.hidden=false;
+      contactContext.querySelector('.selected-service').textContent=service;
+      contactEmail.href='mailto:brasiellodomenico@gmail.com?subject='+encodeURIComponent('Informazioni: '+service);
+    }));
   </script>
 </body>
 </html>
