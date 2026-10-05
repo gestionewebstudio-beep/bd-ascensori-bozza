@@ -1,8 +1,8 @@
-# B.D. Ascensori — bozza homepage
+# B.D. Ascensori — bozza del sito
 
-Anteprima grafica condivisa per la revisione su computer e cellulare.
+Anteprima grafica condivisa per la revisione su computer e cellulare. Il sito comprende homepage, servizi, sei pagine di approfondimento, azienda, metodo di lavoro e contatti. Ogni pagina ha un proprio indirizzo e la navigazione apre documenti separati.
 
-Non è il sito definitivo. La pagina contiene l'impostazione `noindex, nofollow` e non include strumenti di analisi o moduli di invio.
+Non è il sito definitivo. Tutte le pagine contengono l'impostazione `noindex, nofollow` e non includono strumenti di analisi o moduli di invio.
 
 Logo e fotografie sono materiali del cliente. I file delle immagini sono inclusi nell'anteprima.
 
