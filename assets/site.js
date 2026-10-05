@@ -98,7 +98,7 @@ if(context){
  const slug=new URLSearchParams(window.location.search).get('servizio');
  if(Object.prototype.hasOwnProperty.call(serviceLabels,slug)){
   const label=serviceLabels[slug];context.hidden=false;context.querySelector('.selected-service').textContent=label;
-  document.querySelector('.contact-copy a[href^="mailto:"]').href='mailto:brasiellodomenico@gmail.com?subject='+encodeURIComponent('Informazioni: '+label);
+  document.querySelectorAll('.contact-email,.email-action').forEach(link=>{link.href='mailto:brasiellodomenico@gmail.com?subject='+encodeURIComponent('Informazioni: '+label)});
  }
 }
 
