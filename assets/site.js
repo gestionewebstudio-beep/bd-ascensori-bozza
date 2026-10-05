@@ -101,3 +101,42 @@ if(context){
   document.querySelector('.contact-copy a[href^="mailto:"]').href='mailto:brasiellodomenico@gmail.com?subject='+encodeURIComponent('Informazioni: '+label);
  }
 }
+
+const floatingContact=document.querySelector('.contact-floating');
+const contactToggle=floatingContact.querySelector('.contact-toggle');
+const contactPanel=floatingContact.querySelector('.contact-panel');
+function closeContact(restoreFocus=false){
+  contactPanel.hidden=true;
+  contactToggle.setAttribute('aria-expanded','false');
+  contactToggle.setAttribute('aria-label','Apri telefono e WhatsApp');
+  contactPanel.querySelector('details').open=false;
+  if(restoreFocus)contactToggle.focus();
+}
+contactToggle.addEventListener('click',()=>{
+  const opened=contactToggle.getAttribute('aria-expanded')==='true';
+  if(opened){closeContact(true);return;}
+  contactPanel.hidden=false;
+  contactToggle.setAttribute('aria-expanded','true');
+  contactToggle.setAttribute('aria-label','Chiudi telefono e WhatsApp');
+  contactPanel.querySelector('.contact-phone').focus({preventScroll:true});
+});
+floatingContact.querySelector('.contact-close').addEventListener('click',()=>closeContact(true));
+document.addEventListener('pointerdown',event=>{
+  if(!contactPanel.hidden&&!floatingContact.contains(event.target))closeContact();
+});
+document.addEventListener('keydown',event=>{
+  if(event.key==='Escape'&&!contactPanel.hidden){event.preventDefault();closeContact(true);}
+});
+const scrollTopButton=document.querySelector('.scroll-top');
+let scrollFrame=false;
+const updateScrollTop=()=>{scrollTopButton.hidden=window.scrollY<500;scrollFrame=false;};
+window.addEventListener('scroll',()=>{
+  if(!scrollFrame){scrollFrame=true;requestAnimationFrame(updateScrollTop);}
+},{passive:true});
+updateScrollTop();
+scrollTopButton.addEventListener('click',()=>{
+  closeContact();
+  const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  window.scrollTo({top:0,behavior:reduceMotion?'auto':'smooth'});
+  document.getElementById('contenuto').focus({preventScroll:true});
+});
