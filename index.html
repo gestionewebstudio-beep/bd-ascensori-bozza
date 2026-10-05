@@ -57,6 +57,49 @@
     }
     @media(max-width:480px){.contact-item{grid-template-columns:minmax(0,1fr);gap:8px}.service-grid{grid-template-columns:minmax(0,1fr)}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn,.service{transition:none}}
+/* Movimento e contatto diretto: componenti della bozza, senza dipendenze. */
+.hero-picture{isolation:isolate;display:flex;align-items:center;justify-content:center;min-height:620px;background:#0b213c}
+.hero-picture>img{opacity:.2;filter:saturate(.55);object-position:center;z-index:-2}
+.hero-picture:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#102a4d00,#0b213ce6);z-index:-1}
+.lift-demo{width:min(360px,100% - 48px);padding:28px 24px 22px;margin:28px 0 130px;border:1px solid #ffffff29;border-radius:20px;background:linear-gradient(135deg,#153655db,#0b213cf0);box-shadow:0 30px 70px #0004;position:relative}
+.lift-demo-heading{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;color:#d9e6f2;font-size:14px;gap:12px}
+.lift-display{font:700 18px/1 Arial,sans-serif;letter-spacing:2px;color:#ffab87;background:#07182d;padding:12px 14px;border:1px solid #ff92753d;border-radius:6px;min-width:77px;text-align:center}
+.lift-shaft{height:350px;width:222px;margin:auto;position:relative;border:1px solid #7892aa5e;border-radius:9px;background:repeating-linear-gradient(0deg,transparent 0,transparent 106px,#7892aa24 107px,#7892aa24 108px),linear-gradient(90deg,#091a2d,#152f47 50%,#091a2d);overflow:hidden;box-shadow:inset 0 0 26px #0007}
+.lift-rail{position:absolute;top:0;bottom:0;width:4px;background:linear-gradient(90deg,#29475e,#94a8ba,#29475e)}
+.lift-rail:first-child{left:23px}.lift-rail:nth-child(2){right:23px}
+.lift-cables{position:absolute;top:0;bottom:0;left:50%;width:14px;transform:translateX(-50%);background:repeating-linear-gradient(90deg,#5d7286 0,#5d7286 1px,transparent 1px,transparent 6px);opacity:.5}
+.lift-cabin{position:absolute;left:29px;top:26px;width:164px;height:104px;transform:translateY(216px);transition:transform 1.65s cubic-bezier(.55,0,.2,1);border:6px solid #a6b6c3;border-radius:4px;background:linear-gradient(90deg,#1b3144,#617381,#1b3144);box-shadow:0 8px 18px #0008;overflow:hidden}
+.lift-cabin:before{content:"";position:absolute;top:0;left:6px;right:6px;height:3px;background:#ffd5a1;box-shadow:0 0 18px 5px #ffd5a180;opacity:.3;transition:opacity .5s}
+.lift-cabin:after{content:"";position:absolute;inset:0;background:linear-gradient(155deg,#fff2,transparent 50%);pointer-events:none}
+.lift-cabin-light{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0,#ffe7b8cc,transparent 85%);opacity:.12;transition:opacity .6s}
+.lift-door{position:absolute;top:8px;bottom:0;width:50%;border:1px solid #91a3b2;background:linear-gradient(100deg,#718898,#b7c3cc 48%,#597386);transition:transform .8s cubic-bezier(.2,.7,.3,1);box-shadow:inset 0 0 10px #102a4d44}
+.lift-door-left{left:0}.lift-door-right{right:0;background:linear-gradient(100deg,#597386,#a6b7c4 52%,#667f91)}
+.lift-arrived .lift-cabin:before,.lift-arrived .lift-cabin-light{opacity:1}
+.lift-arrived .lift-door-left{transform:translateX(-72%)}.lift-arrived .lift-door-right{transform:translateX(72%)}
+.lift-floor{position:absolute;left:8px;width:6px;height:6px;border-radius:50%;background:#668198;transition:background .5s,box-shadow .5s}
+.lift-floor[data-floor="0"]{top:290px}.lift-floor[data-floor="1"]{top:182px}.lift-floor[data-floor="2"]{top:74px}
+.lift-floor.is-current{background:#ffb085;box-shadow:0 0 14px 4px #ff927566}
+.lift-controls{display:flex;justify-content:center;gap:8px;margin-top:18px}
+.lift-controls button,.lift-pause{border:1px solid #9bb1c54d;background:#142f49;color:#e4edf4;border-radius:8px;min-width:44px;min-height:44px;cursor:pointer;font-size:16px;transition:background .2s,border-color .2s}
+.lift-controls button:hover,.lift-controls button[aria-pressed="true"]{background:#ff927529;border-color:#ff9275;color:#ffb89e}
+.lift-pause{padding:0 13px;font-size:14px;margin-left:auto}.lift-demo-heading>span{font-weight:700}
+.photo-caption{border-radius:0 10px 10px 0;bottom:26px;max-width:none}
+.service{transition:background .25s,box-shadow .25s}.service:hover{background:#f5f8fb;box-shadow:inset 0 3px 0 var(--orange)}
+.service-mark{transition:transform .3s,color .3s,border-color .3s}.service:hover .service-mark{transform:translateY(-3px);border-color:var(--orange);color:var(--orange)}
+.btn{border-radius:9px;transition:background .2s,transform .2s,box-shadow .2s}.btn:hover{box-shadow:0 8px 20px #07182d24}
+.reveal-on-scroll{opacity:0;transform:translateY(18px);transition:opacity .6s,transform .6s}.reveal-on-scroll.is-visible{opacity:1;transform:none}
+.quick-contact{position:fixed;z-index:12;right:24px;bottom:24px;display:flex;gap:8px;background:#fffffff5;border:1px solid #e1e7ed;border-radius:18px;padding:7px;box-shadow:0 8px 32px #102a4d29;backdrop-filter:blur(12px)}
+.quick-contact a{display:flex;align-items:center;justify-content:center;gap:9px;font-size:16px;font-weight:700;min-height:50px;padding:0 18px;border-radius:12px;transition:transform .2s,background .2s}
+.quick-contact a:hover{transform:translateY(-2px)}.quick-phone{background:var(--navy);color:white}.quick-phone:hover{background:var(--blue)}.quick-whatsapp{background:#167b43;color:white}.quick-whatsapp:hover{background:#106637}
+.quick-contact svg{width:22px;height:22px;flex-shrink:0}.footer{padding-bottom:116px}
+@media(min-width:761px){.hero-copy{align-self:center}.hero-inner{grid-template-columns:1.12fr 1fr}}
+@media(max-width:760px){
+ .hero-picture{height:auto;min-height:590px;margin:0 -20px}.lift-demo{margin:24px 0 124px;padding:22px 20px;width:min(336px,100% - 40px)}
+ .photo-caption{left:20px;right:20px;bottom:24px}.quick-contact{left:12px;right:12px;bottom:calc(10px + env(safe-area-inset-bottom));padding:6px;gap:6px;border-radius:16px}
+ .quick-contact a{flex:1;min-width:0;padding:0 8px;min-height:50px}.footer{padding-bottom:calc(110px + env(safe-area-inset-bottom))}
+}
+@media(prefers-reduced-motion:reduce){.lift-cabin,.lift-door,.lift-cabin-light,.lift-cabin:before,.lift-floor,.service,.service-mark,.btn,.quick-contact a,.reveal-on-scroll{transition:none}.reveal-on-scroll{opacity:1;transform:none}.btn:hover,.quick-contact a:hover,.service:hover .service-mark{transform:none}}
+
   </style>
 </head>
 <body id="inizio">
@@ -70,7 +113,11 @@
   <main id="contenuto">
     <section class="hero" aria-labelledby="hero-title"><div class="wrap hero-inner">
       <div class="hero-copy"><div class="eyebrow">B.D. Ascensori · Da oltre 30 anni</div><h1 id="hero-title">Installazione e manutenzione ascensori <span>a Napoli.</span></h1><p>Ci prendiamo cura dei tuoi impianti, dal nuovo ascensore all’assistenza quotidiana. Per condomini, aziende e abitazioni private.</p><div class="actions"><a class="btn btn-primary" href="#contatti">Richiedi un sopralluogo <span class="arrow" aria-hidden="true">↗</span></a><a class="btn btn-outline" href="#assistenza">Hai bisogno di assistenza? <span class="arrow" aria-hidden="true">→</span></a></div><div class="hero-note">Installazione · Manutenzione · Ammodernamento</div></div>
-      <div class="hero-picture"><img src="assets/ascensore-esterno.webp" alt="Ascensore esterno con struttura vetrata, fotografia di B.D. Ascensori" fetchpriority="high"><div class="photo-caption"><strong>Soluzioni per i tuoi spazi.</strong><span>Ascensori, piattaforme e pedane elevatrici.</span></div></div>
+      <div class="hero-picture"><img src="assets/ascensore-esterno.webp" alt="Ascensore esterno con struttura vetrata, fotografia di B.D. Ascensori" fetchpriority="high"><div class="lift-demo lift-arrived" role="group" aria-label="Ascensore animato: scegli un piano per vederlo in movimento">
+        <div class="lift-demo-heading"><span>Il movimento,<br>la nostra specialità.</span><span class="lift-display" aria-hidden="true">00 •</span></div>
+        <div class="lift-shaft" aria-hidden="true"><div class="lift-rail"></div><div class="lift-rail"></div><div class="lift-cables"></div><span class="lift-floor is-current" data-floor="0"></span><span class="lift-floor" data-floor="1"></span><span class="lift-floor" data-floor="2"></span><div class="lift-cabin"><div class="lift-cabin-light"></div><div class="lift-door lift-door-left"></div><div class="lift-door lift-door-right"></div></div></div>
+        <div class="lift-controls"><button type="button" data-go="0" aria-label="Porta l’ascensore al piano zero" aria-pressed="true">0</button><button type="button" data-go="1" aria-label="Porta l’ascensore al primo piano" aria-pressed="false">1</button><button type="button" data-go="2" aria-label="Porta l’ascensore al secondo piano" aria-pressed="false">2</button><button type="button" class="lift-pause" aria-label="Ferma animazione ascensore" aria-pressed="false">Pausa</button></div>
+      </div><div class="photo-caption"><strong>Soluzioni per i tuoi spazi.</strong><span>Ascensori, piattaforme e pedane elevatrici.</span></div></div>
     </div></section>
     <div class="facts"><div class="wrap facts-inner"><div class="fact"><strong>30+</strong><span><b>Anni di esperienza</b>Nel settore degli impianti elevatori</span></div><div class="fact"><strong>Casoria</strong><span><b>Un riferimento vicino</b>Operativi a Napoli e provincia</span></div><div class="fact"><strong>360°</strong><span><b>Il ciclo di vita dell’impianto</b>Dall’installazione all’ammodernamento</span></div></div></div>
     <section class="section" id="servizi" aria-labelledby="servizi-title"><div class="wrap">
@@ -93,6 +140,7 @@
     <section class="contact" id="contatti" aria-labelledby="contatti-title"><div class="wrap contact-grid"><div class="contact-copy"><div class="eyebrow">Contatti</div><h2 id="contatti-title">Parliamo del<br>tuo prossimo lavoro.</h2><p>Siamo a Casoria e operiamo a Napoli e provincia. Per informazioni, assistenza o un sopralluogo, contattaci direttamente.</p><a class="btn btn-primary" href="mailto:brasiellodomenico@gmail.com">Scrivici un’email <span class="arrow" aria-hidden="true">↗</span></a></div><div class="contact-details"><div class="contact-item"><span class="contact-label">Telefono</span><div><a class="contact-main" href="tel:+390817588070">081 7588070</a><div class="contact-small"><a href="tel:+393387724607">338 7724607</a><a href="tel:+393389017297">338 9017297</a></div></div></div><div class="contact-item"><span class="contact-label">Email</span><a href="mailto:brasiellodomenico@gmail.com">brasiellodomenico@gmail.com</a></div><div class="contact-item"><span class="contact-label">Sede</span><address>Via Giulio Pastore, 17<br>80026 Casoria (NA)</address></div></div></div></section>
   </main>
   <footer class="footer"><div class="wrap"><div><strong>B.D. Ascensori S.r.l.</strong>Casoria · Napoli e provincia</div><a class="back-top" href="#inizio">Torna all’inizio <span class="arrow" aria-hidden="true">↑</span></a></div></footer>
+  <nav class="quick-contact" aria-label="Contatto rapido"><a class="quick-phone" href="tel:+390817588070" aria-label="Chiama B.D. Ascensori allo 081 7588070"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3H4a1 1 0 0 0-1 1c0 9.4 7.6 17 17 17a1 1 0 0 0 1-1v-3l-5-2-2 2a15 15 0 0 1-7-7l2-2z"/></svg><span>Chiama</span></a></nav>
   <script>
     const menuButton=document.querySelector('.menu-button');
     const menu=document.querySelector('#menu');
@@ -100,6 +148,90 @@
     menuButton.addEventListener('click',()=>{const opened=menu.classList.toggle('is-open');menuButton.setAttribute('aria-expanded',String(opened))});
     menu.querySelectorAll('a').forEach(link=>link.addEventListener('click',closeMenu));
     document.addEventListener('keydown',event=>{if(event.key==='Escape'&&menu.classList.contains('is-open')){closeMenu();menuButton.focus()}});
+    const lift = document.querySelector('.lift-demo');
+    const cabin = lift.querySelector('.lift-cabin');
+    const display = lift.querySelector('.lift-display');
+    const floorButtons = [...lift.querySelectorAll('[data-go]')];
+    const pauseButton = lift.querySelector('.lift-pause');
+    const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let paused = motionPreference.matches;
+    let liftVisible = false;
+    let floor = 0;
+    let direction = 1;
+    let travelTimer;
+    let arrivalTimer;
+    const syncPause = () => {
+      pauseButton.textContent = paused ? 'Avvia' : 'Pausa';
+      pauseButton.setAttribute('aria-label', paused ? 'Avvia animazione ascensore' : 'Ferma animazione ascensore');
+      pauseButton.setAttribute('aria-pressed', String(paused));
+    };
+    const cancelTravel = () => { clearTimeout(travelTimer); clearTimeout(arrivalTimer); };
+    function goToFloor(next) {
+      cancelTravel();
+      const arrow = next > floor ? '↑' : next < floor ? '↓' : '•';
+      floor = next;
+      lift.classList.remove('lift-arrived');
+      cabin.style.transform = `translateY(${216 - floor * 108}px)`;
+      display.textContent = `0${floor} ${arrow}`;
+      floorButtons.forEach(button => button.setAttribute('aria-pressed', String(Number(button.dataset.go) === floor)));
+      lift.querySelectorAll('.lift-floor').forEach(light => light.classList.remove('is-current'));
+      arrivalTimer = setTimeout(() => {
+        lift.classList.add('lift-arrived');
+        display.textContent = `0${floor} •`;
+        lift.querySelector(`.lift-floor[data-floor="${floor}"]`).classList.add('is-current');
+        scheduleTravel();
+      }, motionPreference.matches ? 0 : 1700);
+    }
+    function scheduleTravel() {
+      clearTimeout(travelTimer);
+      if (paused || !liftVisible || document.hidden) return;
+      travelTimer = setTimeout(() => {
+        if (floor === 2) direction = -1;
+        if (floor === 0) direction = 1;
+        goToFloor(floor + direction);
+      }, 2400);
+    }
+    floorButtons.forEach(button => button.addEventListener('click', () => {
+      paused = true;
+      syncPause();
+      goToFloor(Number(button.dataset.go));
+    }));
+    pauseButton.addEventListener('click', () => {
+      paused = !paused;
+      syncPause();
+      clearTimeout(travelTimer);
+      if (!paused) scheduleTravel();
+    });
+    motionPreference.addEventListener('change', () => {
+      paused = motionPreference.matches;
+      syncPause();
+      goToFloor(floor);
+    });
+    document.addEventListener('visibilitychange', () => {
+      clearTimeout(travelTimer);
+      if (!document.hidden) scheduleTravel();
+    });
+    syncPause();
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(entries => {
+        liftVisible = entries[0].isIntersecting;
+        clearTimeout(travelTimer);
+        if (liftVisible) scheduleTravel();
+      }, {threshold: .15}).observe(lift);
+      if (!motionPreference.matches) {
+        const revealObserver = new IntersectionObserver(entries => entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            revealObserver.unobserve(entry.target);
+          }
+        }), {threshold: .08});
+        document.querySelectorAll('.section-head,.service,.company-photo,.company-copy,.step,.contact-copy').forEach(element => {
+          element.classList.add('reveal-on-scroll');
+          revealObserver.observe(element);
+        });
+      }
+    }
+
   </script>
 </body>
 </html>
