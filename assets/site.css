@@ -210,3 +210,26 @@
 .footer{padding-bottom:116px}
 @media(max-width:760px){.contact-floating{right:16px;bottom:calc(14px + env(safe-area-inset-bottom))}.scroll-top{left:16px;bottom:calc(22px + env(safe-area-inset-bottom))}.contact-panel{padding:20px}.footer{padding-bottom:calc(116px + env(safe-area-inset-bottom))}}
 @media(prefers-reduced-motion:reduce){.contact-panel,.scroll-top{animation:none}.contact-toggle{transition:none}}
+/* Composizione originale: piccoli dettagli della cabina e riduzione su telefono. */
+.lift-cabin{--lift-step:82;left:52px;top:10px;width:116px;height:172px;transform:translateY(164px)}
+.lift-cabin-display{position:absolute;top:0;left:50%;transform:translateX(-50%);width:36px;height:12px;border-radius:2px;background:#07182d;color:#ffb085;font:700 9px/12px Arial,sans-serif;text-align:center;letter-spacing:1px;z-index:3}
+.lift-cabin:before{top:14px;left:5px;right:5px;z-index:1}
+.lift-cabin-light{top:14px}
+.lift-handrail{position:absolute;top:69%;left:10px;right:10px;height:3px;background:linear-gradient(180deg,#e3ebef,#7991a1);box-shadow:0 2px 3px #07182d80}
+.lift-flooring{position:absolute;bottom:0;left:0;right:0;height:12px;background:linear-gradient(180deg,#536976,#a6b6c3);border-top:2px solid #c7d0d6}
+.lift-cabin-panel{position:absolute;right:7px;top:45%;width:9px;height:31px;padding:3px 2px;background:#304b5f;border:1px solid #a6b6c3;border-radius:2px;display:grid;gap:3px;z-index:1}
+.lift-cabin-panel i{width:3px;height:3px;border-radius:50%;background:#d9e2e9}.lift-cabin-panel i:first-child{background:#ffb085}
+.lift-door{top:15px;z-index:2}
+.lift-door:before{content:"";position:absolute;top:20px;left:10px;right:10px;height:58px;background:linear-gradient(120deg,#243f54,#6b899a 45%,#233e54);border:2px solid #7892a3;border-radius:2px}
+.lift-arrived .lift-door-left{transform:translateX(-84%)}.lift-arrived .lift-door-right{transform:translateX(84%)}
+.lift-floor[data-floor="0"]{top:260px}.lift-floor[data-floor="1"]{top:178px}.lift-floor[data-floor="2"]{top:96px}
+.lift-moving .lift-cabin-display{color:#e1eaf2}
+@media(max-width:760px){
+ .hero-picture{min-height:0;padding:24px 0 118px}
+ .lift-demo{width:300px;max-width:calc(100% - 40px);padding:20px 18px;margin:0}
+ .lift-demo-heading{font-size:14px;margin-bottom:18px}
+ .lift-shaft{width:204px;height:300px;background:repeating-linear-gradient(0deg,transparent 0,transparent 88px,#7892aa24 89px,#7892aa24 90px),linear-gradient(90deg,#091a2d,#152f47 50%,#091a2d)}
+ .lift-cabin{--lift-step:66;left:49px;top:8px;width:104px;height:150px;transform:translateY(132px)}
+ .lift-floor[data-floor="0"]{top:215px}.lift-floor[data-floor="1"]{top:149px}.lift-floor[data-floor="2"]{top:83px}
+ .lift-controls{gap:7px}.lift-pause{padding:0 10px}
+}

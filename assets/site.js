@@ -7,91 +7,62 @@ menu.querySelectorAll('a').forEach(link=>link.addEventListener('click',closeMenu
 document.addEventListener('keydown',event=>{if(event.key==='Escape'&&menu.classList.contains('is-open')){closeMenu();menuButton.focus()}});
 const lift=document.querySelector('.lift-demo');
 if(lift){
-    const cabin = lift.querySelector('.lift-cabin');
-    const display = lift.querySelector('.lift-display');
-    const floorButtons = [...lift.querySelectorAll('[data-go]')];
-    const pauseButton = lift.querySelector('.lift-pause');
-    const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
-    let paused = motionPreference.matches;
-    let liftVisible = false;
-    let floor = 0;
-    let direction = 1;
-    let travelTimer;
-    let arrivalTimer;
-    const syncPause = () => {
-      pauseButton.textContent = paused ? 'Avvia' : 'Pausa';
-      pauseButton.setAttribute('aria-label', paused ? 'Avvia animazione ascensore' : 'Ferma animazione ascensore');
-      pauseButton.setAttribute('aria-pressed', String(paused));
-    };
-    const cancelTravel = () => { clearTimeout(travelTimer); clearTimeout(arrivalTimer); };
-    function goToFloor(next) {
-      cancelTravel();
-      const arrow = next > floor ? '↑' : next < floor ? '↓' : '•';
-      floor = next;
-      lift.classList.remove('lift-arrived');
-      cabin.style.transform = `translateY(${216 - floor * 108}px)`;
-      display.textContent = `0${floor} ${arrow}`;
-      floorButtons.forEach(button => button.setAttribute('aria-pressed', String(Number(button.dataset.go) === floor)));
-      lift.querySelectorAll('.lift-floor').forEach(light => light.classList.remove('is-current'));
-      arrivalTimer = setTimeout(() => {
-        lift.classList.add('lift-arrived');
-        display.textContent = `0${floor} •`;
-        lift.querySelector(`.lift-floor[data-floor="${floor}"]`).classList.add('is-current');
-        scheduleTravel();
-      }, motionPreference.matches ? 0 : 1700);
-    }
-    function scheduleTravel() {
-      clearTimeout(travelTimer);
-      if (paused || !liftVisible || document.hidden) return;
-      travelTimer = setTimeout(() => {
-        if (floor === 2) direction = -1;
-        if (floor === 0) direction = 1;
-        goToFloor(floor + direction);
-      }, 2400);
-    }
-    floorButtons.forEach(button => button.addEventListener('click', () => {
-      paused = true;
-      syncPause();
-      goToFloor(Number(button.dataset.go));
-    }));
-    pauseButton.addEventListener('click', () => {
-      paused = !paused;
-      syncPause();
-      clearTimeout(travelTimer);
-      if (!paused) scheduleTravel();
-    });
-    motionPreference.addEventListener('change', () => {
-      paused = motionPreference.matches;
-      syncPause();
-      goToFloor(floor);
-    });
-    document.addEventListener('visibilitychange', () => {
-      clearTimeout(travelTimer);
-      if (!document.hidden) scheduleTravel();
-    });
-    syncPause();
-    if ('IntersectionObserver' in window) {
-      new IntersectionObserver(entries => {
-        liftVisible = entries[0].isIntersecting;
-        clearTimeout(travelTimer);
-        if (liftVisible) scheduleTravel();
-      }, {threshold: .15}).observe(lift);
-      if (!motionPreference.matches) {
-        const revealObserver = new IntersectionObserver(entries => entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            revealObserver.unobserve(entry.target);
-          }
-        }), {threshold: .08});
-        document.querySelectorAll('.section-head,.service,.company-photo,.company-copy,.step,.contact-copy').forEach(element => {
-          element.classList.add('reveal-on-scroll');
-          revealObserver.observe(element);
-        });
-      }
-    }
-
-
+ const cabin=lift.querySelector('.lift-cabin');
+ const positionCabin=next=>{const step=Number(getComputedStyle(cabin).getPropertyValue('--lift-step'));cabin.style.transform=`translateY(${step*(2-next)}px)`;};
+ const display=lift.querySelector('.lift-display');
+ const cabinDisplay=lift.querySelector('.lift-cabin-display');
+ const floorButtons=[...lift.querySelectorAll('[data-go]')];
+ const pauseButton=lift.querySelector('.lift-pause');
+ const preference=window.matchMedia('(prefers-reduced-motion: reduce)');
+ let paused=preference.matches,visible=false,started=false,floor=0,destination=0,direction=1;
+ let departureTimer,arrivalTimer,travelTimer;
+ const syncPause=()=>{pauseButton.textContent=paused?'Avvia':'Pausa';pauseButton.setAttribute('aria-label',paused?'Avvia animazione ascensore':'Ferma animazione ascensore');pauseButton.setAttribute('aria-pressed',String(paused));};
+ const cancelTimers=()=>{clearTimeout(departureTimer);clearTimeout(arrivalTimer);clearTimeout(travelTimer);};
+ function schedule(){
+  clearTimeout(travelTimer);
+  if(paused||!visible||document.hidden)return;
+  travelTimer=setTimeout(()=>{if(floor===2)direction=-1;if(floor===0)direction=1;goToFloor(floor+direction);},2600);
+ }
+ function arrive(next){
+  floor=next;display.textContent=`0${floor} •`;cabinDisplay.textContent=`0${floor}`;
+  lift.classList.remove('lift-moving');lift.classList.add('lift-arrived');
+  lift.querySelectorAll('.lift-floor').forEach(light=>light.classList.toggle('is-current',Number(light.dataset.floor)===floor));
+  schedule();
+ }
+ function goToFloor(next){
+  cancelTimers();
+  const previous=floor;
+  const wasTravelling=destination!==floor;
+  destination=next;
+  const arrow=next>previous?'↑':next<previous?'↓':'•';
+  floorButtons.forEach(button=>button.setAttribute('aria-pressed',String(Number(button.dataset.go)===next)));
+  if(next===previous&&!wasTravelling){
+   arrivalTimer=setTimeout(()=>arrive(next),preference.matches?0:700);
+   return;
+  }
+  lift.classList.remove('lift-arrived');display.textContent=`0${next} ${arrow}`;
+  lift.querySelectorAll('.lift-floor').forEach(light=>light.classList.remove('is-current'));
+  departureTimer=setTimeout(()=>{
+   lift.classList.add('lift-moving');
+   positionCabin(next);
+   arrivalTimer=setTimeout(()=>arrive(next),preference.matches?0:1650);
+  },preference.matches?0:750);
+ }
+ floorButtons.forEach(button=>button.addEventListener('click',()=>{paused=true;syncPause();goToFloor(Number(button.dataset.go));}));
+ pauseButton.addEventListener('click',()=>{paused=!paused;syncPause();clearTimeout(travelTimer);if(!paused)schedule();});
+ preference.addEventListener('change',()=>{cancelTimers();paused=preference.matches;destination=floor;syncPause();positionCabin(floor);arrive(floor);});
+ document.addEventListener('visibilitychange',()=>{clearTimeout(travelTimer);if(!document.hidden)schedule();});
+ window.matchMedia('(max-width: 760px)').addEventListener('change',()=>{cancelTimers();destination=floor;positionCabin(floor);arrive(floor);});
+ syncPause();
+ if('IntersectionObserver' in window){
+  new IntersectionObserver(entries=>{
+   visible=entries[0].isIntersecting;clearTimeout(travelTimer);
+   if(visible&&!started){started=true;goToFloor(0);}else if(visible)schedule();
+  },{threshold:.15}).observe(lift);
+ }else{visible=true;started=true;goToFloor(0);}
 }
+
+
 const serviceLabels={"manutenzione-assistenza":"Manutenzione e assistenza","installazione-ascensori":"Installazione ascensori","ammodernamento-ascensori":"Ammodernamento ascensori","piattaforme-elevatrici":"Piattaforme e pedane elevatrici","automatismi":"Automatismi","citofoni-videocitofoni":"Citofoni e videocitofoni"};
 const context=document.querySelector('.contact-context');
 if(context){
